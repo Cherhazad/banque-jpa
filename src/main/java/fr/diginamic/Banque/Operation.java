@@ -118,6 +118,24 @@ public class Operation {
 	public String toString() {
 		return "Operation [date=" + date + ", montant=" + montant + ", motif=" + motif + "]";
 	}
+
+
+
+	/** Getter pour comptes
+	 * @return the comptes
+	 */
+	public Compte getComptes() {
+		return comptes;
+	}
+
+
+
+	/** Setter pour comptes
+	 * @param comptes the comptes to set
+	 */
+	public void setComptes(Compte comptes) {
+		this.comptes = comptes;
+	}
 	
 	
 

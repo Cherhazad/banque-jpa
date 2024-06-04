@@ -1,9 +1,11 @@
 package fr.diginamic.Banque;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Id;
 
+@Embeddable
 public class Adresse {
 
 	@Id
@@ -22,8 +24,7 @@ public class Adresse {
 	@Column(name = "VILLE")
 	private String ville;
 	
-	@Embedded
-	private Client client;
+	
 
 	/**
 	 * Constructeur
@@ -32,7 +33,6 @@ public class Adresse {
 	public Adresse() {
 		super();
 	}
-	
 	
 
 	/** Constructeur
@@ -124,10 +124,15 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+	
+	
 
 	@Override
 	public String toString() {
 		return "Adresse [numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville + "]";
 	}
+
+
+
 
 }

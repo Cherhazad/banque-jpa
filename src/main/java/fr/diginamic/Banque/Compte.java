@@ -1,5 +1,6 @@
 package fr.diginamic.Banque;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -33,7 +34,7 @@ public class Compte {
 			joinColumns = @JoinColumn(name = "ID_COM", referencedColumnName = "ID"),
 			inverseJoinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"))
 
-	private Set<Client> clients;
+	private Set<Client> clients = new HashSet<>();
 
 	/**
 	 * Constructeur
@@ -99,6 +100,24 @@ public class Compte {
 	@Override
 	public String toString() {
 		return "Compte [numero=" + numero + ", solde=" + solde + "]";
+	}
+
+
+
+	/** Getter pour operations
+	 * @return the operations
+	 */
+	public Set<Operation> getOperations() {
+		return operations;
+	}
+
+
+
+	/** Setter pour operations
+	 * @param operations the operations to set
+	 */
+	public void setOperations(Set<Operation> operations) {
+		this.operations = operations;
 	}
 
 }

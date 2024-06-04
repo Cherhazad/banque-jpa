@@ -1,19 +1,22 @@
 package fr.diginamic.Banque;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@Embeddable
 @Table(name = "CLIENT")
 public class Client {
 
@@ -31,11 +34,20 @@ public class Client {
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
 
-	@ManyToMany(mappedBy = "clients")
-	private Set<Banque> banques;
+	@ManyToMany
+	@JoinTable(name = "BANQUES_CLIENTS",
+		joinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName ="ID"),
+		inverseJoinColumns = @JoinColumn(name = "ID_BAN", referencedColumnName = "ID"))
+	private Set<Banque> banques = new HashSet<>();
 
-	@ManyToMany(mappedBy = "clients")
-	private Set<Compte> comptes;
+	@ManyToMany
+	@JoinTable(name = "COMPTES_CLIENTS", 
+		joinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"), 
+		inverseJoinColumns = @JoinColumn(name = "ID_COM", referencedColumnName = "ID"))
+	private Set<Compte> comptes = new HashSet<>();
+
+	@Embedded
+	private Adresse adresses;
 
 	/**
 	 * Constructeur
@@ -52,17 +64,14 @@ public class Client {
 	 * @param nom
 	 * @param prenom
 	 * @param dateNaissance
-	 * @param banques
-	 * @param comptes
 	 */
-	public Client(int id, String nom, String prenom, Date dateNaissance, Set<Banque> banques, Set<Compte> comptes) {
+	public Client(int id, String nom, String prenom, Date dateNaissance) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
-		this.banques = banques;
-		this.comptes = comptes;
+
 	}
 
 	/**
@@ -122,6 +131,60 @@ public class Client {
 	@Override
 	public String toString() {
 		return "Client [nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance + "]";
+	}
+
+	/**
+	 * Getter pour banques
+	 * 
+	 * @return the banques
+	 */
+	public Set<Banque> getBanques() {
+		return banques;
+	}
+
+	/**
+	 * Setter pour banques
+	 * 
+	 * @param banques the banques to set
+	 */
+	public void setBanques(Set<Banque> banques) {
+		this.banques = banques;
+	}
+
+	/**
+	 * Getter pour comptes
+	 * 
+	 * @return the comptes
+	 */
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	/**
+	 * Setter pour comptes
+	 * 
+	 * @param comptes the comptes to set
+	 */
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
+	/**
+	 * Getter pour adresses
+	 * 
+	 * @return the adresses
+	 */
+	public Adresse getAdresses() {
+		return adresses;
+	}
+
+	/**
+	 * Setter pour adresses
+	 * 
+	 * @param adresses the adresses to set
+	 */
+	public void setAdresses(Adresse adresses) {
+		this.adresses = adresses;
 	}
 
 }
