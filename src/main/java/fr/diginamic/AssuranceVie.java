@@ -2,12 +2,13 @@ package fr.diginamic;
 
 import java.util.Date;
 
+import fr.diginamic.Banque.Compte;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
-public class AssuranceVie {
+public class AssuranceVie extends Compte {
 
 	@Id
 	@Column(name = "ID")

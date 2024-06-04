@@ -57,7 +57,7 @@ public class ConnexionJpa {
 
 		Client client1 = new Client(1, "Brigand", "Pierre", date1);
 		client1.setAdresses(adresse1);
-		client1.getBanques().add(banque1);
+		client1.getBanques().add(banque1); //fonctionne car on a mis une relation maître/maître des deux côtés. Si on a un ManyToMany et un mappedBy, alors c'est la classe maître qui doit recevoir donc ici compte qui va recevoir un client et non l'inverse. 
 		client1.getComptes().add(compte1);
 		em.persist(client1);
 
@@ -80,6 +80,8 @@ public class ConnexionJpa {
 		Operation ope2 = new Operation(2, date4, 198.99, "Cadeau anniversaire Juliette");
 		ope2.setComptes(compte2);
 		em.persist(ope2);
+		
+		//insérer un compte associé à 2 clients
 
 		transaction.commit();
 
