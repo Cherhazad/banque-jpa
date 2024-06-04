@@ -10,6 +10,7 @@
 			<property name="jakarta.persistence.jdbc.user" value="unebfpmijp8zsmhi" />
 			<property name="jakarta.persistence.jdbc.password" value="gWFFCNnj6SsvdtlX4hHT" />
 			<property name="hibernate.show_sql" value="true" />
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 		</properties>
 	</persistence-unit>
 </persistence>
