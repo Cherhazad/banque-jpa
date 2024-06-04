@@ -1,5 +1,14 @@
 package fr.diginamic;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
+import fr.diginamic.Banque.Adresse;
+import fr.diginamic.Banque.Banque;
+import fr.diginamic.Banque.Client;
+import fr.diginamic.Banque.Compte;
+import fr.diginamic.Banque.Operation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -11,11 +20,67 @@ public class ConnexionJpa {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("banque");
 		EntityManager em = emf.createEntityManager();
-		//EntityTransaction transaction = em.getTransaction();
+		EntityTransaction transaction = em.getTransaction();
 
-		//transaction.begin();
+		transaction.begin();
 		
-		//transaction.commit();
+		//Instanciation des objets
+		
+		//Client
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(1988, 04, 23);
+		Date date1 = cal.getTime();
+		Client client1 = new Client(1, "Brigand", "Pierre", date1);
+		em.persist(client1);
+		
+		cal.set(1997, 01, 02);
+		Date date2 = cal.getTime();
+		Client client2 = new Client(2, "Durant", "Julien", date2);
+		em.persist(client2);
+		
+		
+		//Banque 
+		
+		Banque banque1 = new Banque(1, "LCL");
+		em.persist(banque1);
+		
+		Banque banque2 = new Banque(2, "La Banque Populaire");
+		em.persist(banque2);
+		
+		
+		//Adresse
+		
+		Adresse adresse1 = new Adresse(1, 10, "Rue de la Poste", 34000, "Montpellier");
+		em.persist(adresse1);
+		
+		Adresse adresse2 = new Adresse(2, 287, "Avenue de Palavas", 34070, "Montpellier");
+		em.persist(adresse2);
+		
+		
+		//Compte
+		
+		Compte compte1 = new Compte(1, "FR75 2670 7609 2356 A58", 29876.89);
+		em.persist(compte1);
+		
+		Compte compte2 = new Compte(2, "FR65 1256 7634 8798 Z28", 1768.56);
+		em.persist(compte2);
+		
+		//Operation
+		
+		cal.set(2024, 06, 04);
+		Date date3 = cal.getTime();
+		Operation ope1 = new Operation(1, date3, 265.99, "Location AirB&b");
+		em.persist(ope1);
+		
+		cal.set(2024, 06, 04);
+		Date date4 = cal.getTime();
+		Operation ope2 = new Operation(1, date4, 198.99, "Cadeau anniversaire Juliette");
+		em.persist(ope2);
+		
+		
+		
+		transaction.commit();
 		
 		em.close();
 

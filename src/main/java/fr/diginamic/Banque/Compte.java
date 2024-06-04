@@ -42,6 +42,23 @@ public class Compte {
 	public Compte() {
 		super();
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param numero
+	 * @param solde
+	 * @param operations
+	 */
+	public Compte(int id, String numero, double solde) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.solde = solde;
+	}
+
+
 
 	/**
 	 * Getter pour numero

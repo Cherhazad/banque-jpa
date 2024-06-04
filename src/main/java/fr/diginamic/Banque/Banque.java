@@ -34,6 +34,21 @@ public class Banque {
 	public Banque() {
 		super();
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param nom
+	 * @param clients
+	 */
+	public Banque(int id, String nom) {
+		super();
+		this.id = id;
+		this.nom = nom;
+	}
+
+
 
 	/**
 	 * Getter pour id

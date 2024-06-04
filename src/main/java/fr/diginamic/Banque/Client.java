@@ -1,6 +1,5 @@
 package fr.diginamic.Banque;
 
-
 import java.util.Date;
 import java.util.Set;
 
@@ -21,23 +20,22 @@ public class Client {
 	@Id
 	@Column(name = "ID")
 	private int id;
-	
+
 	@Column(name = "NOM")
 	private String nom;
-	
+
 	@Column(name = "PRENOM")
 	private String prenom;
-	
+
 	@Column(name = "DATE_NAISSANCE")
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
-	
+
 	@ManyToMany(mappedBy = "clients")
 	private Set<Banque> banques;
-	
+
 	@ManyToMany(mappedBy = "clients")
 	private Set<Compte> comptes;
-	
 
 	/**
 	 * Constructeur
@@ -45,6 +43,26 @@ public class Client {
 	 */
 	public Client() {
 		super();
+	}
+
+	/**
+	 * Constructeur
+	 * 
+	 * @param id
+	 * @param nom
+	 * @param prenom
+	 * @param dateNaissance
+	 * @param banques
+	 * @param comptes
+	 */
+	public Client(int id, String nom, String prenom, Date dateNaissance, Set<Banque> banques, Set<Compte> comptes) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.banques = banques;
+		this.comptes = comptes;
 	}
 
 	/**

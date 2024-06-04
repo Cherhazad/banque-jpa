@@ -32,6 +32,26 @@ public class Adresse {
 	public Adresse() {
 		super();
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param numero
+	 * @param rue
+	 * @param codePostal
+	 * @param ville
+	 */
+	public Adresse(int id, int numero, String rue, int codePostal, String ville) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.rue = rue;
+		this.codePostal = codePostal;
+		this.ville = ville;
+	}
+
+
 
 	/**
 	 * Getter pour numero

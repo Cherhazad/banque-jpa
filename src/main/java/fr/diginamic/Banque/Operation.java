@@ -41,6 +41,24 @@ public class Operation {
 	public Operation() {
 		super();
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param date
+	 * @param montant
+	 * @param motif
+	 */
+	public Operation(int id, Date date, double montant, String motif) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.montant = montant;
+		this.motif = motif;
+	}
+
+
 
 	/**
 	 * Getter pour date
