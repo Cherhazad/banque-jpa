@@ -1,6 +1,7 @@
 package fr.diginamic.Banque;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Id;
 
 public class Adresse {
@@ -20,6 +21,9 @@ public class Adresse {
 	
 	@Column(name = "VILLE")
 	private String ville;
+	
+	@Embedded
+	private Client client;
 
 	/**
 	 * Constructeur

@@ -1,13 +1,20 @@
 package fr.diginamic.Banque;
 
-import java.time.LocalDate;
+
+import java.util.Date;
+import java.util.Set;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
+@Embeddable
 @Table(name = "CLIENT")
 public class Client {
 
@@ -22,7 +29,15 @@ public class Client {
 	private String prenom;
 	
 	@Column(name = "DATE_NAISSANCE")
-	private LocalDate dateNaissance;
+	@Temporal(TemporalType.DATE)
+	private Date dateNaissance;
+	
+	@ManyToMany(mappedBy = "clients")
+	private Set<Banque> banques;
+	
+	@ManyToMany(mappedBy = "clients")
+	private Set<Compte> comptes;
+	
 
 	/**
 	 * Constructeur
@@ -73,7 +88,7 @@ public class Client {
 	 * 
 	 * @return the dateNaissance
 	 */
-	public LocalDate getDateNaissance() {
+	public Date getDateNaissance() {
 		return dateNaissance;
 	}
 
@@ -82,7 +97,7 @@ public class Client {
 	 * 
 	 * @param dateNaissance the dateNaissance to set
 	 */
-	public void setDateNaissance(LocalDate dateNaissance) {
+	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

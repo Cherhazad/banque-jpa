@@ -1,11 +1,16 @@
-package fr.diginamic;
+package fr.diginamic.Banque;
 
 import java.util.Date;
+import fr.diginamic.Banque.Compte;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "OPERATION")
@@ -16,6 +21,7 @@ public class Operation {
 	private int id;
 	
 	@Column(name = "DATE")
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@Column(name = "MONTANT")
@@ -23,6 +29,10 @@ public class Operation {
 	
 	@Column(name = "MOTIF")
 	private String motif;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_COMPTES")
+	private Compte comptes;
 
 	/**
 	 * Constructeur

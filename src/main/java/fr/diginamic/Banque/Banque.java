@@ -1,8 +1,13 @@
 package fr.diginamic.Banque;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +20,12 @@ public class Banque {
 	
 	@Column(name = "NOM")
 	private String nom;
+	
+	@ManyToMany
+	@JoinTable(name = "BANQUES_CLIENTS",
+		joinColumns = @JoinColumn(name = "ID_BAN", referencedColumnName ="ID"),
+		inverseJoinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"))
+	private Set<Client> clients;
 
 	/**
 	 * Constructeur

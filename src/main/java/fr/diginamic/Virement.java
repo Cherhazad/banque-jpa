@@ -1,5 +1,6 @@
 package fr.diginamic;
 
+import fr.diginamic.Banque.Operation;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 

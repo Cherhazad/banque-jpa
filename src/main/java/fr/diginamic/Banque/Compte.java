@@ -1,8 +1,14 @@
 package fr.diginamic.Banque;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,6 +24,16 @@ public class Compte {
 	
 	@Column(name = "SOLDE")
 	private double solde;
+	
+	@OneToMany(mappedBy = "comptes")
+	private Set<Operation> operations;
+	
+	@ManyToMany
+	@JoinTable(name = "COMPTES_CLIENTS",
+			joinColumns = @JoinColumn(name = "ID_COM", referencedColumnName = "ID"),
+			inverseJoinColumns = @JoinColumn(name = "ID_CLI", referencedColumnName = "ID"))
+
+	private Set<Client> clients;
 
 	/**
 	 * Constructeur

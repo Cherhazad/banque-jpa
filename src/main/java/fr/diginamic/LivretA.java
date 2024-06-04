@@ -1,10 +1,10 @@
 package fr.diginamic;
 
-import fr.diginamic.Banque.Compte;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 
-public class LivretA extends Compte {
+public class LivretA  {
 	
 	@Id
 	@Column(name = "ID")

@@ -1,17 +1,20 @@
-package fr.diginamic.Banque;
+package fr.diginamic;
 
 import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
-public class AssuranceVie extends Compte {
+public class AssuranceVie {
 
 	@Id
 	@Column(name = "ID")
 	private int id;
 	
 	@Column(name = "ID")
+	@Temporal(TemporalType.DATE)
 	private Date dateFin;
 	
 	@Column(name = "TAUX")
