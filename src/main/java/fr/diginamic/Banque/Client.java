@@ -1,11 +1,27 @@
-package Banque.Entites;
+package fr.diginamic.Banque;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "CLIENT")
 public class Client {
 
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "NOM")
 	private String nom;
+	
+	@Column(name = "PRENOM")
 	private String prenom;
+	
+	@Column(name = "DATE_NAISSANCE")
 	private LocalDate dateNaissance;
 
 	/**

@@ -1,9 +1,15 @@
-package Banque;
+package fr.diginamic;
 
-import Banque.Entites.Operation;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
 public class Virement extends Operation {
 
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "BENEFICIAIRE")
 	private String beneficiaire;
 
 	/**

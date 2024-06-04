@@ -1,10 +1,24 @@
-package Banque.Entites;
+package fr.diginamic.Banque;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
 public class Adresse {
 
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "NUMERO")
 	private int numero;
+	
+	@Column(name = "RUE")
 	private String rue;
+	
+	@Column(name = "CODE_POSTAL")
 	private int codePostal;
+	
+	@Column(name = "VILLE")
 	private String ville;
 
 	/**

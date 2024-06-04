@@ -1,8 +1,22 @@
-package Banque.Entites;
+package fr.diginamic.Banque;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "COMPTE")
 public class Compte {
 
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "NUMERO")
 	private String numero;
+	
+	@Column(name = "SOLDE")
 	private double solde;
 
 	/**

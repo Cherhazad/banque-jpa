@@ -1,11 +1,27 @@
-package Banque.Entites;
+package fr.diginamic;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "OPERATION")
 public class Operation {
-
-	private LocalDateTime date;
+	
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "DATE")
+	private Date date;
+	
+	@Column(name = "MONTANT")
 	private double montant;
+	
+	@Column(name = "MOTIF")
 	private String motif;
 
 	/**
@@ -21,7 +37,7 @@ public class Operation {
 	 * 
 	 * @return the date
 	 */
-	public LocalDateTime getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -30,7 +46,7 @@ public class Operation {
 	 * 
 	 * @param date the date to set
 	 */
-	public void setDate(LocalDateTime date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

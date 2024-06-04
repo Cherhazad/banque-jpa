@@ -1,9 +1,16 @@
-package Banque;
+package fr.diginamic;
 
-import Banque.Entites.Compte;
+import fr.diginamic.Banque.Compte;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
 public class LivretA extends Compte {
-
+	
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "TAUX")
 	private double taux;
 
 	/**

@@ -1,12 +1,20 @@
-package Banque;
+package fr.diginamic.Banque;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-import Banque.Entites.Compte;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
 
 public class AssuranceVie extends Compte {
 
-	private LocalDate dateFin;
+	@Id
+	@Column(name = "ID")
+	private int id;
+	
+	@Column(name = "ID")
+	private Date dateFin;
+	
+	@Column(name = "TAUX")
 	private double taux;
 
 	/**
@@ -22,7 +30,7 @@ public class AssuranceVie extends Compte {
 	 * 
 	 * @return the dateFin
 	 */
-	public LocalDate getDateFin() {
+	public Date getDateFin() {
 		return dateFin;
 	}
 
@@ -31,7 +39,7 @@ public class AssuranceVie extends Compte {
 	 * 
 	 * @param dateFin the dateFin to set
 	 */
-	public void setDateFin(LocalDate dateFin) {
+	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
 
