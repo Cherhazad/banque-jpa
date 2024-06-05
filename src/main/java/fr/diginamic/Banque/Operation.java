@@ -15,7 +15,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name = "OPERATION")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Operation {
 	
 	@Id

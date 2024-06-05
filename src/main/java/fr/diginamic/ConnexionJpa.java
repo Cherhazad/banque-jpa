@@ -27,8 +27,8 @@ public class ConnexionJpa {
 
 		// Adresse
 
-		Adresse adresse1 = new Adresse(1, 10, "Rue de la Poste", 34000, "Montpellier");
-		Adresse adresse2 = new Adresse(2, 287, "Avenue de Palavas", 34070, "Montpellier");
+		Adresse adresse1 = new Adresse(10, "Rue de la Poste", 34000, "Montpellier");
+		Adresse adresse2 = new Adresse(287, "Avenue de Palavas", 34070, "Montpellier");
 
 		// Compte
 
@@ -107,7 +107,9 @@ public class ConnexionJpa {
 
 		// Insérer un client avec plusieurs comptes
 
-		Client client3 = new Client();
+		cal.set(1971, 5, 19);
+		Date date6 = cal.getTime();
+		Client client3 = new Client(3, "JGTYI", "Marie", date6);
 		client3.getComptes().add(livret1);
 //		client3.getComptes().add(assur1);
 		em.persist(client3);

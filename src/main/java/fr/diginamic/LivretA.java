@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("L")
+@Table(name="LIVRET_A")
 public class LivretA extends Compte {
 	
 	@Id

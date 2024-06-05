@@ -7,10 +7,6 @@ import jakarta.persistence.Id;
 
 @Embeddable
 public class Adresse {
-
-	@Id
-	@Column(name = "ID")
-	private int id;
 	
 	@Column(name = "NUMERO")
 	private int numero;
@@ -42,9 +38,8 @@ public class Adresse {
 	 * @param codePostal
 	 * @param ville
 	 */
-	public Adresse(int id, int numero, String rue, int codePostal, String ville) {
-		super();
-		this.id = id;
+	public Adresse(int numero, String rue, int codePostal, String ville) {
+
 		this.numero = numero;
 		this.rue = rue;
 		this.codePostal = codePostal;

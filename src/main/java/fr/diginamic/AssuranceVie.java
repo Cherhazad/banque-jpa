@@ -4,14 +4,14 @@ import java.util.Date;
 
 import fr.diginamic.Banque.Compte;
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-@DiscriminatorValue("A")
+@Table(name="ASSURANCE_VIE")
 public class AssuranceVie extends Compte {
 
 	@Id
