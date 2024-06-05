@@ -4,17 +4,21 @@ import java.util.Date;
 
 import fr.diginamic.Banque.Compte;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
+@Entity
+@DiscriminatorValue("A")
 public class AssuranceVie extends Compte {
 
 	@Id
 	@Column(name = "ID")
 	private int id;
 	
-	@Column(name = "ID")
+	@Column(name = "DATE_FIN")
 	@Temporal(TemporalType.DATE)
 	private Date dateFin;
 	
@@ -26,8 +30,23 @@ public class AssuranceVie extends Compte {
 	 * 
 	 */
 	public AssuranceVie() {
-		super();
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param dateFin
+	 * @param taux
+	 */
+	public AssuranceVie(int id, Date dateFin, double taux) {
+		super();
+		this.id = id;
+		this.dateFin = dateFin;
+		this.taux = taux;
+	}
+
+
 
 	/**
 	 * Getter pour dateFin

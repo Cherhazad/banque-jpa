@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
@@ -11,14 +12,14 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.MappedSuperclass;
+
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "COMPTE")
-@MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "TYPE")
 public class Compte {
 
 	@Id
@@ -32,7 +33,7 @@ public class Compte {
 	private double solde;
 	
 	@OneToMany(mappedBy = "comptes")
-	private Set<Operation> operations;
+	private Set<Operation> operations = new HashSet<>();
 	
 	@ManyToMany
 	@JoinTable(name = "COMPTES_CLIENTS",
@@ -123,6 +124,24 @@ public class Compte {
 	 */
 	public void setOperations(Set<Operation> operations) {
 		this.operations = operations;
+	}
+
+
+
+	/** Getter pour clients
+	 * @return the clients
+	 */
+	public Set<Client> getClients() {
+		return clients;
+	}
+
+
+
+	/** Setter pour clients
+	 * @param clients the clients to set
+	 */
+	public void setClients(Set<Client> clients) {
+		this.clients = clients;
 	}
 
 }

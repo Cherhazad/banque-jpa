@@ -25,7 +25,6 @@ public class ConnexionJpa {
 
 		// Instanciation des objets
 
-
 		// Adresse
 
 		Adresse adresse1 = new Adresse(1, 10, "Rue de la Poste", 34000, "Montpellier");
@@ -38,7 +37,9 @@ public class ConnexionJpa {
 
 		Compte compte2 = new Compte(2, "FR65 1256 7634 8798 Z28", 1768.56);
 		em.persist(compte2);
-		
+
+		Compte compte3 = new Compte(3, "FR27 9865 2456 1745 H76", 23.98);
+
 		// Banque
 
 		Banque banque1 = new Banque(1, "LCL");
@@ -57,7 +58,9 @@ public class ConnexionJpa {
 
 		Client client1 = new Client(1, "Brigand", "Pierre", date1);
 		client1.setAdresses(adresse1);
-		client1.getBanques().add(banque1); //fonctionne car on a mis une relation maître/maître des deux côtés. Si on a un ManyToMany et un mappedBy, alors c'est la classe maître qui doit recevoir donc ici compte qui va recevoir un client et non l'inverse. 
+		client1.getBanques().add(banque1); // fonctionne car on a mis une relation maître/maître des deux côtés. Si on a
+											// un ManyToMany et un mappedBy, alors c'est la classe maître qui doit
+											// recevoir donc ici compte qui va recevoir un client et non l'inverse.
 		client1.getComptes().add(compte1);
 		em.persist(client1);
 
@@ -80,8 +83,34 @@ public class ConnexionJpa {
 		Operation ope2 = new Operation(2, date4, 198.99, "Cadeau anniversaire Juliette");
 		ope2.setComptes(compte2);
 		em.persist(ope2);
-		
-		//insérer un compte associé à 2 clients
+
+		// insérer un compte associé à 2 clients
+
+		compte3.getClients().add(client1);
+		compte3.getClients().add(client2);
+		em.persist(compte3);
+
+//		// Assurance Vie
+//		cal.set(2032, 8, 31);
+//		Date date5 = cal.getTime();
+//		AssuranceVie assur1 = new AssuranceVie(3, date5, 10.5);
+//		assur1.setNumero("FR45 7687 2456 1745 H18");
+//		assur1.setSolde(18765.78);
+//		em.persist(assur1);
+
+		// Livret A
+
+		LivretA livret1 = new LivretA(4, 6);
+		livret1.setNumero("FR58 2367 2198 1919 A56");
+		livret1.setSolde(2256.78);
+		em.persist(livret1);
+
+		// Insérer un client avec plusieurs comptes
+
+		Client client3 = new Client();
+		client3.getComptes().add(livret1);
+//		client3.getComptes().add(assur1);
+		em.persist(client3);
 
 		transaction.commit();
 

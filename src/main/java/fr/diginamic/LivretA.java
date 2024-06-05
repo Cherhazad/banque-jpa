@@ -3,8 +3,13 @@ package fr.diginamic;
 
 import fr.diginamic.Banque.Compte;
 import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@DiscriminatorValue("L")
 public class LivretA extends Compte {
 	
 	@Id
@@ -20,8 +25,22 @@ public class LivretA extends Compte {
 	 */
 	
 	public LivretA() {
-		super();
+		
 	}
+	
+	
+
+	/** Constructeur
+	 * @param id
+	 * @param taux
+	 */
+	public LivretA(int id, double taux) {
+		super();
+		this.id = id;
+		this.taux = taux;
+	}
+
+
 
 	/**
 	 * Getter pour taux
